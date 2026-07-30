@@ -188,8 +188,8 @@ export function getStoredProfile(): UserProfile {
     const saved = localStorage.getItem(STORAGE_KEY_PROFILE);
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Ensure image is valid and not a stale temporary blob URL
-      const profileImage = (parsed.profileImage && !parsed.profileImage.startsWith('blob:'))
+      // Ensure image is valid and fallback to initialProfile.profileImage (mahbubafinal.jpg)
+      const profileImage = (parsed.profileImage && parsed.profileImage.startsWith('http'))
         ? parsed.profileImage
         : initialProfile.profileImage;
 
