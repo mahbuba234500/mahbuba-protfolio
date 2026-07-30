@@ -63,8 +63,11 @@ export default function App() {
   };
 
   const handleResetDefaults = () => {
-    localStorage.removeItem('mahbuba_portfolio_profile_v1');
-    localStorage.removeItem('mahbuba_portfolio_projects_v1');
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith('mahbuba_portfolio_')) {
+        localStorage.removeItem(key);
+      }
+    });
     setProfile(initialProfile);
     setProjects(initialProjects);
     setIsCustomizerOpen(false);

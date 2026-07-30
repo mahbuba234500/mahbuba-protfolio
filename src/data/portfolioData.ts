@@ -188,17 +188,18 @@ export function getStoredProfile(): UserProfile {
     const saved = localStorage.getItem(STORAGE_KEY_PROFILE);
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Ensure image is valid and fallback to initialProfile.profileImage (mahbubafinal.jpg)
       let profileImage = parsed.profileImage;
-      if (
-        !profileImage ||
-        typeof profileImage !== 'string' ||
-        profileImage.trim() === '' ||
-        profileImage.startsWith('blob:') ||
-        profileImage.startsWith('/src/') ||
-        profileImage.includes('17854')
-      ) {
-        profileImage = initialProfile.profileImage;
+
+      // Only allow custom external URLs (http/https) or uploaded data URIs (data:image/)
+      const isValidCustomImage =
+        typeof profileImage === 'string' &&
+        profileImage.trim() !== '' &&
+        (profileImage.startsWith('http://') ||
+         profileImage.startsWith('https://') ||
+         profileImage.startsWith('data:image/'));
+
+      if (!isValidCustomImage) {
+        profileImage = initialProfile.profileImage || '/mahbubafinal.jpg';
       }
 
       return {
