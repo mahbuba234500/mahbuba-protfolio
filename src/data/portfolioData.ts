@@ -1,6 +1,5 @@
 import { UserProfile, EducationItem, SkillCategory, Project } from '../types';
 
-import profileAvatar from '../assets/images/mahbubafinal.jpg';
 import bloodDonationThumb from '../assets/images/blood_donation_thumb_1785418132505.jpg';
 import busManagementThumb from '../assets/images/bus_management_thumb_1785418147580.jpg';
 import supershopThumb from '../assets/images/supershop_thumb_1785418160195.jpg';
@@ -16,7 +15,7 @@ export const initialProfile: UserProfile = {
   email: 'mahhhislam@gmail.com',
   university: 'Daffodil International University',
   cgpa: '3.88',
-  profileImage: profileAvatar,
+  profileImage: '/profile.jpeg',
   resumeUrl: '#',
   socials: {
     github: 'https://github.com/mahbubaislam',
@@ -178,66 +177,3 @@ export const initialProjects: Project[] = [
     category: 'Retail & POS'
   }
 ];
-
-// LocalStorage Persistence Helpers
-const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v16';
-const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v16';
-
-export function getStoredProfile(): UserProfile {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY_PROFILE);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      let profileImage = parsed.profileImage;
-
-      // Only allow custom external URLs (http/https) or uploaded data URIs (data:image/)
-      const isValidCustomImage =
-        typeof profileImage === 'string' &&
-        profileImage.trim() !== '' &&
-        (profileImage.startsWith('http://') ||
-         profileImage.startsWith('https://') ||
-         profileImage.startsWith('data:image/'));
-
-      if (!isValidCustomImage) {
-        profileImage = initialProfile.profileImage || '/mahbubafinal.jpg';
-      }
-
-      return {
-        ...initialProfile,
-        ...parsed,
-        profileImage
-      };
-    }
-  } catch (e) {
-    console.error('Error loading saved profile:', e);
-  }
-  return initialProfile;
-}
-
-export function saveStoredProfile(profile: UserProfile): void {
-  try {
-    localStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(profile));
-  } catch (e) {
-    console.error('Error saving profile:', e);
-  }
-}
-
-export function getStoredProjects(): Project[] {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY_PROJECTS);
-    if (saved) {
-      return JSON.parse(saved);
-    }
-  } catch (e) {
-    console.error('Error loading saved projects:', e);
-  }
-  return initialProjects;
-}
-
-export function saveStoredProjects(projects: Project[]): void {
-  try {
-    localStorage.setItem(STORAGE_KEY_PROJECTS, JSON.stringify(projects));
-  } catch (e) {
-    console.error('Error saving projects:', e);
-  }
-}

@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { UserProfile, Project, SkillCategory, EducationItem } from './types';
 import {
-  getStoredProfile,
-  saveStoredProfile,
-  getStoredProjects,
-  saveStoredProjects,
   initialProfile,
   initialProjects,
   initialEducation,
@@ -20,13 +15,9 @@ import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ProfileCustomizer } from './components/ProfileCustomizer';
 
 export default function App() {
-  const [profile, setProfile] = useState<UserProfile>(getStoredProfile);
-  const [projects, setProjects] = useState<Project[]>(getStoredProjects);
   const [activeSection, setActiveSection] = useState<string>('home');
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState<boolean>(false);
 
   // Section Observer for Active Nav Link
   useEffect(() => {
@@ -52,69 +43,31 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSaveProfile = (updatedProfile: UserProfile) => {
-    setProfile(updatedProfile);
-    saveStoredProfile(updatedProfile);
-  };
-
-  const handleSaveProjects = (updatedProjects: Project[]) => {
-    setProjects(updatedProjects);
-    saveStoredProjects(updatedProjects);
-  };
-
-  const handleResetDefaults = () => {
-    Object.keys(localStorage).forEach((key) => {
-      if (key.startsWith('mahbuba_portfolio_')) {
-        localStorage.removeItem(key);
-      }
-    });
-    setProfile(initialProfile);
-    setProjects(initialProjects);
-    setIsCustomizerOpen(false);
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
       
       {/* Navbar */}
-      <Navbar
-        activeSection={activeSection}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
-      />
+      <Navbar activeSection={activeSection} />
 
       {/* Main Content Sections */}
       <main>
-        <Hero
-          profile={profile}
-          onOpenCustomizer={() => setIsCustomizerOpen(true)}
-        />
+        <Hero profile={initialProfile} />
         
-        <About profile={profile} />
+        <About profile={initialProfile} />
 
         <Education educationList={initialEducation} />
 
-        <Experience profile={profile} />
+        <Experience profile={initialProfile} />
 
         <Skills categories={initialSkillCategories} />
 
-        <Projects projects={projects} />
+        <Projects projects={initialProjects} />
 
-        <Contact profile={profile} />
+        <Contact profile={initialProfile} />
       </main>
 
       {/* Footer */}
-      <Footer profile={profile} />
-
-      {/* Profile & Links Settings Customizer Drawer */}
-      <ProfileCustomizer
-        profile={profile}
-        projects={projects}
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        onSaveProfile={handleSaveProfile}
-        onSaveProjects={handleSaveProjects}
-        onReset={handleResetDefaults}
-      />
+      <Footer profile={initialProfile} />
 
     </div>
   );

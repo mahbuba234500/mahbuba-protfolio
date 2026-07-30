@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Settings } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
-  onOpenCustomizer: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenCustomizer }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -78,27 +77,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenCustomizer 
               </a>
             );
           })}
-
-          {/* Quick Edit Portfolio Settings Button */}
-          <button
-            onClick={onOpenCustomizer}
-            title="Customize Links & Photo"
-            className="ml-3 p-2 rounded-full text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-slate-800 transition-colors"
-          >
-            <Settings className="w-4 h-4" />
-          </button>
         </nav>
 
-        {/* Mobile Hamburger & Customizer */}
-        <div className="flex md:hidden items-center space-x-2">
-          <button
-            onClick={onOpenCustomizer}
-            title="Customize Links & Photo"
-            className="p-2 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-slate-800 transition-colors"
-          >
-            <Settings className="w-4 h-4" />
-          </button>
-
+        {/* Mobile Hamburger */}
+        <div className="flex md:hidden items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none"

@@ -1,21 +1,18 @@
 import React from 'react';
 import { UserProfile } from '../types';
-import { initialProfile } from '../data/portfolioData';
 import {
   Github,
   Linkedin,
   Facebook,
   Mail,
-  ArrowDown,
-  Settings
+  ArrowDown
 } from 'lucide-react';
 
 interface HeroProps {
   profile: UserProfile;
-  onOpenCustomizer: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ profile, onOpenCustomizer }) => {
+export const Hero: React.FC<HeroProps> = ({ profile }) => {
   const handleScrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) {
@@ -39,35 +36,13 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenCustomizer }) => {
           <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.55)]">
             <div className="w-full h-full rounded-full overflow-hidden bg-slate-950 relative">
               <img
-                src={profile.profileImage || initialProfile.profileImage}
+                src={profile.profileImage}
                 alt={profile.name}
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.dataset.fallback1) {
-                    target.dataset.fallback1 = 'true';
-                    target.src = initialProfile.profileImage;
-                  } else if (!target.dataset.fallback2) {
-                    target.dataset.fallback2 = 'true';
-                    target.src = '/mahbubafinal.jpg';
-                  } else if (!target.dataset.fallback3) {
-                    target.dataset.fallback3 = 'true';
-                    target.src = '/profile.jpg';
-                  }
-                }}
                 className="w-full h-full rounded-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
-
-          {/* Settings Customizer Icon */}
-          <button
-            onClick={onOpenCustomizer}
-            title="Customize Profile"
-            className="absolute bottom-1 right-1 p-2.5 bg-slate-900/90 text-cyan-400 border border-cyan-500/50 rounded-full shadow-lg hover:bg-cyan-500 hover:text-slate-950 transition-all duration-200 hover:scale-110"
-          >
-            <Settings className="w-4 h-4" />
-          </button>
         </div>
 
         {/* Name Heading */}
@@ -79,12 +54,12 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenCustomizer }) => {
 
         {/* Subtitle / Tagline */}
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-cyan-400 mb-4 tracking-wide">
-          Software Developer | Full-Stack Web Developer
+          {profile.tagline}
         </h2>
 
         {/* Description */}
         <p className="text-base sm:text-lg text-slate-300 max-w-2xl mb-10 leading-relaxed font-light">
-          Passionate software developer focused on building modern, responsive, and user-friendly web applications. Interested in full-stack development, problem solving, clean code, and continuous learning.
+          {profile.subtitle}
         </p>
 
         {/* Action Buttons */}
