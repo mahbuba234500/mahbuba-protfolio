@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UserProfile, Project } from '../types';
+import { initialProfile } from '../data/portfolioData';
 import { X, Save, RotateCcw, Image, Link, Github, Linkedin, Facebook, Mail, Check, Upload } from 'lucide-react';
 
 interface ProfileCustomizerProps {
@@ -108,9 +109,17 @@ export const ProfileCustomizer: React.FC<ProfileCustomizerProps> = ({
             <div className="flex items-center space-x-4">
               <div className="w-20 h-20 rounded-full border-2 border-cyan-400 overflow-hidden bg-slate-950 flex-shrink-0">
                 <img
-                  src={editedProfile.profileImage}
+                  src={editedProfile.profileImage || initialProfile.profileImage}
                   alt="Preview"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== initialProfile.profileImage) {
+                      target.src = initialProfile.profileImage;
+                    } else {
+                      target.src = '/mahbubafinal.jpg';
+                    }
+                  }}
                   className="w-full h-full object-cover"
                 />
               </div>

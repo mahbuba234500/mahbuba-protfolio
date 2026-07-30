@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserProfile } from '../types';
+import { initialProfile } from '../data/portfolioData';
 import { Github, Linkedin, Facebook, Mail, ArrowDown, Sparkles, Camera } from 'lucide-react';
 
 interface HeroProps {
@@ -27,9 +28,17 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenCustomizer }) => {
         <div className="relative group mb-8">
           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full p-1 border-2 border-cyan-400/80 shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all duration-500 group-hover:shadow-[0_0_45px_rgba(34,211,238,0.65)] group-hover:scale-105 bg-slate-900 relative overflow-hidden">
             <img
-              src={profile.profileImage}
+              src={profile.profileImage || initialProfile.profileImage}
               alt={profile.name}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (target.src !== initialProfile.profileImage) {
+                  target.src = initialProfile.profileImage;
+                } else {
+                  target.src = '/mahbubafinal.jpg';
+                }
+              }}
               className="w-full h-full rounded-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
             />
           </div>

@@ -180,8 +180,8 @@ export const initialProjects: Project[] = [
 ];
 
 // LocalStorage Persistence Helpers
-const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v11';
-const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v11';
+const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v12';
+const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v12';
 
 export function getStoredProfile(): UserProfile {
   try {
@@ -189,9 +189,10 @@ export function getStoredProfile(): UserProfile {
     if (saved) {
       const parsed = JSON.parse(saved);
       // Ensure image is valid and fallback to initialProfile.profileImage (mahbubafinal.jpg)
-      const profileImage = (parsed.profileImage && parsed.profileImage.startsWith('http'))
-        ? parsed.profileImage
-        : initialProfile.profileImage;
+      let profileImage = parsed.profileImage;
+      if (!profileImage || typeof profileImage !== 'string' || profileImage.startsWith('blob:') || profileImage.trim() === '') {
+        profileImage = initialProfile.profileImage;
+      }
 
       return {
         ...initialProfile,

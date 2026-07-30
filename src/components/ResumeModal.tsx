@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserProfile } from '../types';
+import { initialProfile } from '../data/portfolioData';
 import { X, Printer, Download, Mail, MapPin, Phone, Briefcase, GraduationCap, Award, ExternalLink, Globe, UserCheck } from 'lucide-react';
 
 interface ResumeModalProps {
@@ -51,9 +52,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ profile, onClose }) =>
             <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-cyan-400/80 overflow-hidden shadow-lg flex-shrink-0 bg-slate-800">
                 <img
-                  src={profile.profileImage}
+                  src={profile.profileImage || initialProfile.profileImage}
                   alt={profile.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== initialProfile.profileImage) {
+                      target.src = initialProfile.profileImage;
+                    } else {
+                      target.src = '/mahbubafinal.jpg';
+                    }
+                  }}
                   className="w-full h-full object-cover object-center"
                 />
               </div>
