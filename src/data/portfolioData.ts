@@ -1,6 +1,6 @@
 import { UserProfile, EducationItem, SkillCategory, Project } from '../types';
 
-import profileAvatar from 'WhatsApp Image 2026-07-30 at 20.34.58.jpeg';
+import profileAvatar from '../assets/images/mahbubafinal.jpg';
 import bloodDonationThumb from '../assets/images/blood_donation_thumb_1785418132505.jpg';
 import busManagementThumb from '../assets/images/bus_management_thumb_1785418147580.jpg';
 import supershopThumb from '../assets/images/supershop_thumb_1785418160195.jpg';
@@ -180,8 +180,8 @@ export const initialProjects: Project[] = [
 ];
 
 // LocalStorage Persistence Helpers
-const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v10';
-const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v10';
+const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v11';
+const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v11';
 
 export function getStoredProfile(): UserProfile {
   try {
