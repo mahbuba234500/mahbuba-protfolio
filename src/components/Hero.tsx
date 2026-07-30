@@ -33,10 +33,15 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenCustomizer }) => {
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (target.src !== initialProfile.profileImage) {
+                if (!target.dataset.fallback1) {
+                  target.dataset.fallback1 = 'true';
                   target.src = initialProfile.profileImage;
-                } else {
+                } else if (!target.dataset.fallback2) {
+                  target.dataset.fallback2 = 'true';
                   target.src = '/mahbubafinal.jpg';
+                } else if (!target.dataset.fallback3) {
+                  target.dataset.fallback3 = 'true';
+                  target.src = '/profile.jpg';
                 }
               }}
               className="w-full h-full rounded-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
