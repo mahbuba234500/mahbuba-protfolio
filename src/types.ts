@@ -41,6 +41,30 @@ export interface SocialLinks {
   email: string;
 }
 
+export interface WorkExperienceItem {
+  id: string;
+  category: string;
+  role: string;
+  bullets: string[];
+  linkName?: string;
+  linkUrl?: string;
+}
+
+export interface ReferenceItem {
+  id: string;
+  name: string;
+  title: string;
+  organization: string;
+  location?: string;
+  phone: string;
+  email: string;
+}
+
+export interface LanguageItem {
+  name: string;
+  level: string;
+}
+
 export interface UserProfile {
   name: string;
   tagline: string;
@@ -48,9 +72,15 @@ export interface UserProfile {
   subtitle: string;
   bio: string;
   location: string;
+  phone?: string;
+  email?: string;
   university?: string;
   cgpa?: string;
   profileImage: string;
   resumeUrl: string;
   socials: SocialLinks;
+  experiences?: WorkExperienceItem[];
+  extracurriculars?: string[];
+  languages?: LanguageItem[];
+  references?: ReferenceItem[];
 }

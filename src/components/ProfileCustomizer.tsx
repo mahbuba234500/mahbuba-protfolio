@@ -128,7 +128,7 @@ export const ProfileCustomizer: React.FC<ProfileCustomizerProps> = ({
                   />
                 </label>
 
-                <p className="text-[11px] text-slate-400">Or paste an image URL below:</p>
+                <p className="text-[11px] text-slate-400">Or paste an image URL / repo path below:</p>
               </div>
             </div>
 
@@ -136,9 +136,12 @@ export const ProfileCustomizer: React.FC<ProfileCustomizerProps> = ({
               type="text"
               value={editedProfile.profileImage}
               onChange={(e) => handleProfileChange('profileImage', e.target.value)}
-              placeholder="https://example.com/photo.jpg"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+              placeholder="/profile.jpg or https://raw.githubusercontent.com/username/repo/main/public/profile.jpg"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
             />
+            <p className="text-[11px] text-slate-500 italic">
+              Tip: For GitHub Pages / published sites, place your photo in the <code className="text-cyan-400 font-mono">public/profile.jpg</code> folder or use your GitHub Avatar URL (<code className="text-cyan-400 font-mono">https://avatars.githubusercontent.com/mahbubaislam</code>).
+            </p>
           </div>
 
           {/* Social Links Section */}

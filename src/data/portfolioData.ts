@@ -1,17 +1,19 @@
 import { UserProfile, EducationItem, SkillCategory, Project } from '../types';
 
-import profileAvatar from '../assets/images/mahbuba_centered_face_1785421750016.jpg';
+import profileAvatar from 'WhatsApp Image 2026-07-30 at 20.34.58.jpeg';
 import bloodDonationThumb from '../assets/images/blood_donation_thumb_1785418132505.jpg';
 import busManagementThumb from '../assets/images/bus_management_thumb_1785418147580.jpg';
 import supershopThumb from '../assets/images/supershop_thumb_1785418160195.jpg';
 
 export const initialProfile: UserProfile = {
   name: 'Mahbuba Islam',
-  tagline: '',
+  tagline: 'Software Engineer',
   badgeText: '',
-  subtitle: 'Building clean, functional applications with strong software engineering principles and modern web technologies.',
-  bio: 'I am Mahbuba Islam, a dedicated developer with a strong focus on software principles and web technologies. I enjoy building clean, functional applications, practicing problem solving, and continuously exploring new technologies to improve my craft.',
+  subtitle: 'Computer science student passionate about AI, ML, Web Development & DevOps.',
+  bio: "I'm Mahbuba Islam, a computer science student with a strong passion for AI, Machine Learning etc. My long-term goal is to grow as a DevOps engineer, data engineer, and security analyst, and eventually contribute to research and teaching in these fields. Self-motivated, reliable, and always curious, I consistently work to improve my skills and create meaningful contributions wherever I work.",
   location: 'Dhaka, Bangladesh',
+  phone: '+8801974060314',
+  email: 'mahhhislam@gmail.com',
   university: 'Daffodil International University',
   cgpa: '3.88',
   profileImage: profileAvatar,
@@ -20,8 +22,54 @@ export const initialProfile: UserProfile = {
     github: 'https://github.com/mahbubaislam',
     linkedin: 'https://linkedin.com/in/mahbubaislam',
     facebook: 'https://facebook.com/mahbubaislam',
-    email: 'mailto:mahbubaislam123445@gmail.com'
-  }
+    email: 'mailto:mahhhislam@gmail.com'
+  },
+  experiences: [
+    {
+      id: 'exp-web-dev',
+      category: 'Web Development',
+      role: 'Website Design',
+      bullets: ['Made a website for a cake shop'],
+      linkName: 'Bunny Cakes',
+      linkUrl: 'https://github.com/mahbubaislam'
+    },
+    {
+      id: 'exp-smm',
+      category: 'Social Media Marketing',
+      role: 'Sales Assistant and ads campaign',
+      bullets: [
+        'Worked for a clothing business to grow and get targeted audience',
+        'Worked for cafe and made ads for promotion'
+      ]
+    }
+  ],
+  extracurriculars: [
+    'I have organized more than 10 successful seminars at Daffodil International University.',
+    'Volunteer, ICPC Asia Dhaka Regional 2024 - Onsite Regional Contest'
+  ],
+  languages: [
+    { name: 'Bangla', level: 'Native' },
+    { name: 'English', level: 'Fluent' }
+  ],
+  references: [
+    {
+      id: 'ref-1',
+      name: 'Dr. Imran Mahmud',
+      title: 'Professor & Head',
+      organization: 'Department of Software Engineering, Daffodil International University',
+      phone: '+8801847-140117',
+      email: 'imranmahmud@daffodilvarsity.edu.bd'
+    },
+    {
+      id: 'ref-2',
+      name: 'Askar Ibn Azad',
+      title: 'Senior .NET Developer',
+      organization: 'Royex Technologies · Full-time',
+      location: 'Dubai, United Arab Emirates',
+      phone: '+8801751-242425',
+      email: 'askar.ibn@gmail.com'
+    }
+  ]
 };
 
 export const initialEducation: EducationItem[] = [
@@ -59,27 +107,20 @@ export const initialEducation: EducationItem[] = [
 
 export const initialSkillCategories: SkillCategory[] = [
   {
-    title: 'Programming Languages',
+    title: 'Technical & Programming Skills',
     skills: [
-      { name: 'C', level: 'Intermediate', iconName: 'Code2', description: 'Procedural programming, memory allocation & algorithms' },
-      { name: 'C++', level: 'Intermediate', iconName: 'Code', description: 'Object-oriented programming, STL, data structures' },
-      { name: 'Java', level: 'Intermediate', iconName: 'Coffee', description: 'OOP concepts, exception handling, class design' },
-      { name: 'Python', level: 'Basic to Intermediate', iconName: 'Terminal', description: 'Scripting, basic automation & data logic' },
-      { name: 'JavaScript', level: 'Intermediate', iconName: 'FileCode', description: 'ES6+, DOM manipulation, asynchronous logic' }
+      { name: 'Programming', level: 'C, C++, Java', iconName: 'Code2', description: 'Core OOP, problem solving & algorithms' },
+      { name: 'Web Development', level: 'Frontend', iconName: 'Globe', description: 'Responsive layouts, HTML/CSS, JavaScript & web interfaces' },
+      { name: 'Graphics Design', level: 'Proficient', iconName: 'Palette', description: 'Visual design, branding & media assets' },
+      { name: 'MS Office', level: 'Proficient', iconName: 'FileCode', description: 'Word, Excel, PowerPoint & documentation' }
     ]
   },
   {
-    title: 'Web & Interface Technologies',
+    title: 'Digital Marketing & Soft Skills',
     skills: [
-      { name: 'HTML5', level: 'Proficient', iconName: 'Globe', description: 'Semantic markup, accessibility & structured web pages' },
-      { name: 'CSS3', level: 'Proficient', iconName: 'Palette', description: 'Responsive layouts, Flexbox, Grid, animations & styling' }
-    ]
-  },
-  {
-    title: 'Database & Developer Tools',
-    skills: [
-      { name: 'SQL', level: 'Intermediate', iconName: 'Database', description: 'Relational queries, table schemas & CRUD operations' },
-      { name: 'Git', level: 'Intermediate', iconName: 'GitBranch', description: 'Version control, branching, commit discipline & GitHub' }
+      { name: 'Digital Marketing', level: 'Experienced', iconName: 'Sparkles', description: 'Ads campaigns, brand growth & audience targeting' },
+      { name: 'Communication Skills', level: 'Fluent', iconName: 'Terminal', description: 'Effective collaboration, presenting & seminar organization' },
+      { name: 'Teamwork', level: 'Collaborative', iconName: 'GitBranch', description: 'Cross-functional teamwork & leadership' }
     ]
   }
 ];
@@ -139,14 +180,24 @@ export const initialProjects: Project[] = [
 ];
 
 // LocalStorage Persistence Helpers
-const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v9';
-const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v9';
+const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v10';
+const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v10';
 
 export function getStoredProfile(): UserProfile {
   try {
     const saved = localStorage.getItem(STORAGE_KEY_PROFILE);
     if (saved) {
-      return { ...initialProfile, ...JSON.parse(saved) };
+      const parsed = JSON.parse(saved);
+      // Ensure image is valid and not a stale temporary blob URL
+      const profileImage = (parsed.profileImage && !parsed.profileImage.startsWith('blob:'))
+        ? parsed.profileImage
+        : initialProfile.profileImage;
+
+      return {
+        ...initialProfile,
+        ...parsed,
+        profileImage
+      };
     }
   } catch (e) {
     console.error('Error loading saved profile:', e);

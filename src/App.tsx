@@ -15,6 +15,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Education } from './components/Education';
+import { Experience } from './components/Experience';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
@@ -29,7 +30,7 @@ export default function App() {
 
   // Section Observer for Active Nav Link
   useEffect(() => {
-    const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact'];
+    const sections = ['home', 'about', 'education', 'experience', 'skills', 'projects', 'contact'];
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
@@ -88,6 +89,8 @@ export default function App() {
         <About profile={profile} />
 
         <Education educationList={initialEducation} />
+
+        <Experience profile={profile} />
 
         <Skills categories={initialSkillCategories} />
 
