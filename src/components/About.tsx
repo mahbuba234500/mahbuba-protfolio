@@ -29,8 +29,8 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
               
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span>Passionate Software Engineer</span>
-                <span className="text-xs px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800">Coder</span>
+                <span>Software Engineering Student</span>
+                <span className="text-xs px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800">B.Sc. Undergraduate</span>
               </h3>
 
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
@@ -40,19 +40,19 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
               <div className="mt-6 pt-6 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span>University: <strong>Daffodil International Univ.</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span>Major: <strong>Software Engineering</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span>Academic Standing: <strong>CGPA 3.88</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                   <span>Location: <strong>{profile.location}</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Focus: <strong>Web Development & OOP</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Interest: <strong>Open Source & System Design</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Goal: <strong>Building Impactful Software</strong></span>
                 </div>
               </div>
 

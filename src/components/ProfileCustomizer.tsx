@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserProfile, Project } from '../types';
 import { initialProfile } from '../data/portfolioData';
-import { X, Save, RotateCcw, Image, Link, Github, Linkedin, Facebook, Mail, Check, Upload } from 'lucide-react';
+import { X, Save, RotateCcw, Link, Github, Linkedin, Facebook, Mail, Check, Image, Upload } from 'lucide-react';
 
 interface ProfileCustomizerProps {
   profile: UserProfile;
@@ -156,6 +156,45 @@ export const ProfileCustomizer: React.FC<ProfileCustomizerProps> = ({
             <p className="text-[11px] text-slate-500 italic">
               Tip: For GitHub Pages / published sites, place your photo in the <code className="text-cyan-400 font-mono">public/profile.jpg</code> folder or use your GitHub Avatar URL (<code className="text-cyan-400 font-mono">https://avatars.githubusercontent.com/mahbubaislam</code>).
             </p>
+          </div>
+
+          {/* Headline & Details Section */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase font-bold text-cyan-400 tracking-wider flex items-center gap-2">
+              <span>Headline & Tagline</span>
+            </h4>
+
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-medium text-slate-400 mb-1">Full Name</label>
+                <input
+                  type="text"
+                  value={editedProfile.name}
+                  onChange={(e) => handleProfileChange('name', e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-400 mb-1">Tagline / Title</label>
+                <input
+                  type="text"
+                  value={editedProfile.tagline}
+                  onChange={(e) => handleProfileChange('tagline', e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-400 mb-1">Badge Pill Text</label>
+                <input
+                  type="text"
+                  value={editedProfile.badgeText}
+                  onChange={(e) => handleProfileChange('badgeText', e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Social Links Section */}

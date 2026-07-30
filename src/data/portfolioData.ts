@@ -7,10 +7,10 @@ import supershopThumb from '../assets/images/supershop_thumb_1785418160195.jpg';
 
 export const initialProfile: UserProfile = {
   name: 'Mahbuba Islam',
-  tagline: 'Software Engineer',
+  tagline: 'Software Developer | Full-Stack Web Developer',
   badgeText: '',
-  subtitle: 'Computer science student passionate about AI, ML, Web Development & DevOps.',
-  bio: "I'm Mahbuba Islam, a computer science student with a strong passion for AI, Machine Learning etc. My long-term goal is to grow as a DevOps engineer, data engineer, and security analyst, and eventually contribute to research and teaching in these fields. Self-motivated, reliable, and always curious, I consistently work to improve my skills and create meaningful contributions wherever I work.",
+  subtitle: 'Passionate software developer focused on building modern, responsive, and user-friendly web applications. Interested in full-stack development, problem solving, clean code, and continuous learning.',
+  bio: "I am Mahbuba Islam, a dedicated Software Engineering student at Daffodil International University (CGPA 3.88). I am deeply passionate about full-stack web development, software design patterns, object-oriented programming, and building efficient, scalable applications. My long-term goal is to grow as a DevOps engineer, software architect, and researcher in computing technologies. Self-motivated, organized, and constantly curious, I am always learning new tools to craft clean, high-quality code.",
   location: 'Dhaka, Bangladesh',
   phone: '+8801974060314',
   email: 'mahhhislam@gmail.com',
@@ -180,8 +180,8 @@ export const initialProjects: Project[] = [
 ];
 
 // LocalStorage Persistence Helpers
-const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v13';
-const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v13';
+const STORAGE_KEY_PROFILE = 'mahbuba_portfolio_profile_v16';
+const STORAGE_KEY_PROJECTS = 'mahbuba_portfolio_projects_v16';
 
 export function getStoredProfile(): UserProfile {
   try {

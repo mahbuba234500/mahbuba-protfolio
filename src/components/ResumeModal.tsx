@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserProfile } from '../types';
 import { initialProfile } from '../data/portfolioData';
-import { X, Printer, Download, Mail, MapPin, Phone, Briefcase, GraduationCap, Award, ExternalLink, Globe, UserCheck } from 'lucide-react';
+import { X, Printer, Download, Mail, MapPin, Phone, Briefcase, GraduationCap, Award, ExternalLink, Globe, UserCheck, Code2 } from 'lucide-react';
 
 interface ResumeModalProps {
   profile: UserProfile;
@@ -50,7 +50,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ profile, onClose }) =>
           {/* Top Profile Header */}
           <div className="border-b border-slate-800 pb-8 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-cyan-400/80 overflow-hidden shadow-lg flex-shrink-0 bg-slate-800">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-2 border-cyan-400/80 overflow-hidden shadow-lg flex-shrink-0 bg-slate-900">
                 <img
                   src={profile.profileImage || initialProfile.profileImage}
                   alt={profile.name}
@@ -73,7 +73,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ profile, onClose }) =>
               </div>
               <div>
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{profile.name}</h1>
-                <p className="text-cyan-400 font-semibold text-lg mt-1 tracking-wide">Software Engineer</p>
+                <p className="text-cyan-400 font-semibold text-lg mt-1 tracking-wide">Software Engineering Student</p>
                 <p className="text-slate-400 text-xs mt-2 flex items-center justify-center sm:justify-start gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                   <span>{profile.location}</span>
